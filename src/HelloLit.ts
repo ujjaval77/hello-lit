@@ -16,13 +16,26 @@ export class HelloLit extends LitElement {
   @property({ type: Number }) counter = 5;
 
   __increment() {
-    this.counter += 1;
+    const app = this.renderRoot.getElementById('app');
+    const demo = this.renderRoot.getElementById('demo');
+    demo.textContent = 'Hello World';
+    app?.appendChild(demo);
+
+    const element = this.renderRoot.createElement('button');
+    element.appendChild(document.createTextNode('Click Me!'));
+    const page = this.renderRoot.getElementById('secondaryNav');
+    page.innerHTML = '';
+    page.appendChild(element);
   }
 
   render() {
     return html`
-      <h2>${this.title} Nr. ${this.counter}! ${this.personName}</h2>
+      <h2>${this.title} ${this.personName}</h2>
       <button @click=${this.__increment}>increment</button>
+      <div id="app">
+        <p id="demo"></p>
+        <div id="secondaryNav"></div>
+      </div>
     `;
   }
 }

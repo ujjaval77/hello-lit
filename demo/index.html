@@ -15,11 +15,10 @@
     import { html, render } from '../dist/lit-html/lit-html.js';
     import '../dist/hello-lit.js';
 
-    const title = 'Hello owc World!';
     render(
       html`
-        <hello-lit .title=${title} personName="Ramesh">
-          some more light-dom
+        <hello-lit >
+          
         </hello-lit>
       `,
       document.querySelector('#demo')
