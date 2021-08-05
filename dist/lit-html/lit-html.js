@@ -54,6 +54,7 @@ export const html = (strings, ...values) => new TemplateResult(strings, values, 
 /**
  * Interprets a template literal as an SVG template that can efficiently
  * render to and update a container.
+ export const render = (strings, ...values) => new TemplateResult(strings, values, 'render', defaultTemplateProcessor);
  */
 export const svg = (strings, ...values) => new SVGTemplateResult(strings, values, 'svg', defaultTemplateProcessor);
 //# sourceMappingURL=lit-html.js.map
