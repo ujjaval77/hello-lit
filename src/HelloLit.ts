@@ -21,7 +21,7 @@ export class HelloLit extends LitElement {
     demo.textContent = 'Hello World';
     app?.appendChild(demo);
 
-    const element = this.renderRoot.createElement('button');
+    const element = document.createElement('button');
     element.appendChild(document.createTextNode('Click Me!'));
     const page = this.renderRoot.getElementById('secondaryNav');
     page.innerHTML = '';
