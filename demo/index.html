@@ -12,12 +12,13 @@
   <div id="demo"></div>
 
   <script type="module">
-    import { html, render } from '@dist/lit-html/lit-html.js';
-    import '@dist/hello-lit.js';
+    import { html, render } from '../dist/lit-html/lit-html.js';
+    import '../dist/hello-lit.js';
 
     render(
       html`
-        <hello-lit>
+        <hello-lit >
+          
         </hello-lit>
       `,
       document.querySelector('#demo')

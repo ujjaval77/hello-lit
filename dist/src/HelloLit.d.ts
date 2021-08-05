@@ -8,4 +8,8 @@ export declare class HelloLit extends LitElement {
   personName: string;
 
   counter: number;
+
+  __increment(): void;
+
+  render(): import('lit-element').TemplateResult;
 }

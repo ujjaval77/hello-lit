@@ -11,7 +11,7 @@ export class HelloLit extends LitElement {
 
   @property({ type: String }) title = 'Hey there';
 
-  @property({ type: String }) personName = 'Saurabh';
+  @property({ type: String }) personName = 'Welcome';
 
   @property({ type: Number }) counter = 5;
 
@@ -31,7 +31,7 @@ export class HelloLit extends LitElement {
   render() {
     return html`
       <h2>${this.title} ${this.personName}</h2>
-      <button @click=${this.__increment}>increment</button>
+      <button @click="${this.__increment}">increment</button>
       <div id="app">
         <p id="demo"></p>
         <div id="secondaryNav"></div>
