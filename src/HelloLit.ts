@@ -15,18 +15,26 @@ export class HelloLit extends LitElement {
 
   @property({ type: Number }) counter = 5;
 
-  @property({type: Array}) myArray = [''];
+  @property({type: Array}) myArray = [''];  
+  children: any ;
+  index:any;
 
   get button(){
     return html `
         <button>Click Me!</button>
     `
   }
+  
+  get secondButton() {
+    return html`
+        <button>{{label}}</button>
+    `
+  }
 
-  __increment() {
+  __buttonPOC() {
        
-    const app = this.renderRoot.getElementById("app");
-    const demo = this.renderRoot.getElementById("demo");
+    const app = document.getElementById("app");
+    const demo = document.getElementById("demo");
     demo.textContent = "Hello World";
     app?.appendChild(demo);
     
@@ -36,17 +44,33 @@ export class HelloLit extends LitElement {
     let html = '';
     for (var i=0; i<myArray.length; i++) {
         var menu = template;
-        var menuItemHtml = menu.strings[0].replace('{{label}}', myArray[i].name);
+        var menuItemHtml = menu.strings[0].replace('{{label}}', myArray[i]['name']);
 
         html += menuItemHtml;
     }
     page.innerHTML = html;
 }
 
+  renderSecondaryNav(index:number){
+    const myArray = this.myArray;
+    var navObj = myArray[index];
+    var page = this.renderRoot.getElementById('tertiaryButton');
+    let template = this.secondButton;
+    let html = '';
+    for (var i=0; i< navObj.children.length; i++){
+        var menu = template;
+        var menuItemHtml = menu.strings[0].replace('{{label}}', navObj['children']['name']);
+
+        html += menuItemHtml;
+    } 
+    page.innerHTML = html;
+  }
+
+
   render() {
     return html`
       <h2>${this.title} ${this.personName}</h2>
-      <button @click="${this.__increment}">increment</button>
+      <button @click="${this.__buttonPOC}">Click Me!</button>
       <div id="app">
         <p id="demo"></p>
         <div id="secondaryNav"></div>

@@ -19,7 +19,14 @@ export class HelloLit extends LitElement {
             <button>{{label}}</button>
         `
     }
-    __increment() {
+
+    get secondButton() {
+        return html`
+            <button>{{label}}</button>
+        `
+    }
+
+    __buttonPOC() {
        
         const app = this.renderRoot.getElementById("app");
         const demo = this.renderRoot.getElementById("demo");
@@ -37,14 +44,35 @@ export class HelloLit extends LitElement {
             html += menuItemHtml;
         }
         page.innerHTML = html;
+
+        this.rendersecondTab(index);
     }
+
+    renderSecondaryNav(index){
+        const myArray = this.myArray;
+        var navOjb = myArray[index];
+        var page = this.renderRoot.getElementById('tertiaryButton');
+        let template = this.secondButton;
+        let html = '';
+        for (var i=0; i< navObj.children.length; i++){
+            var menu = template;
+            var menuItemHtml = menu.strings[0].replace('{{label}}', navObj.children.name);
+
+            html += menuItemHtml;
+        } 
+        page.innerHTML = html;
+    }
+
+
     render() {
         return html `
       <h2>${this.title}, ${this.personName}</h2>
-      <button @click="${this.__increment}">increment</button>
+      <button @click="${this.__buttonPOC}">increment</button>
       <div id="app">
       <div id="secondaryNav"></div>
         <p id="demo"></p>
+      </div>
+      <div id="tertiaryButton">
       </div>
     `;
     }

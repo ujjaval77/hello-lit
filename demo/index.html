@@ -17,11 +17,20 @@
 
     const myArray = [{
         name: "Button1",
-      },{
-        name: "Button2"
-      },{
-        name: "Button3"
-      }]
+        children: {
+          name: "ChildButton1"
+          }
+        },{
+          name: "Button2",
+          children: {
+          name: "ChildButton1"
+          }
+        },{
+          name: "Button3",
+          children: {
+          name: "ChildButton1"
+          }
+        }]
 
     render (
       html`
