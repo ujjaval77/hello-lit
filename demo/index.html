@@ -15,9 +15,17 @@
     import { html, render } from '../dist/lit-html/lit-html.js';
     import '../dist/hello-lit.js';
 
-    render(
+    const myArray = [{
+        name: "Button1",
+      },{
+        name: "Button2"
+      },{
+        name: "Button3"
+      }]
+
+    render (
       html`
-        <hello-lit >
+        <hello-lit .myArray=${myArray}>
           
         </hello-lit>
       `,

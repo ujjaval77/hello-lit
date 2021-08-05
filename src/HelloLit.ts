@@ -15,18 +15,33 @@ export class HelloLit extends LitElement {
 
   @property({ type: Number }) counter = 5;
 
-  __increment() {
-    const app = this.renderRoot.getElementById('app');
-    const demo = this.renderRoot.getElementById('demo');
-    demo.textContent = 'Hello World';
-    app?.appendChild(demo);
+  @property({type: Array}) myArray = [''];
 
-    const element = document.createElement('button');
-    element.appendChild(document.createTextNode('Click Me!'));
-    const page = this.renderRoot.getElementById('secondaryNav');
-    page.innerHTML = '';
-    page.appendChild(element);
+  get button(){
+    return html `
+        <button>Click Me!</button>
+    `
   }
+
+  __increment() {
+       
+    const app = this.renderRoot.getElementById("app");
+    const demo = this.renderRoot.getElementById("demo");
+    demo.textContent = "Hello World";
+    app?.appendChild(demo);
+    
+    const myArray = this.myArray;
+    var page= this.renderRoot.getElementById('secondaryNav');
+    let template = this.button;
+    let html = '';
+    for (var i=0; i<myArray.length; i++) {
+        var menu = template;
+        var menuItemHtml = menu.strings[0].replace('{{label}}', myArray[i].name);
+
+        html += menuItemHtml;
+    }
+    page.innerHTML = html;
+}
 
   render() {
     return html`

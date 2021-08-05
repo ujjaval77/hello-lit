@@ -6,6 +6,18 @@ export class HelloLit extends LitElement {
         this.title = 'Hey there';
         this.personName = 'Welcome';
         this.counter = 5;
+        this.myArray = [''];
+    }
+    static get properties() {
+        return {
+            myArray: { type: Array }
+        };
+    }
+
+    get button(){
+        return html `
+            <button>{{label}}</button>
+        `
     }
     __increment() {
        
@@ -14,19 +26,25 @@ export class HelloLit extends LitElement {
         demo.textContent = "Hello World";
         app?.appendChild(demo);
         
-        const element = document.createElement("button");
-        element.appendChild(document.createTextNode("Click Me!"));
+        const myArray = this.myArray;
         var page= this.renderRoot.getElementById('secondaryNav');
-        page.innerHTML="";
-        page.appendChild(element);
+        let template = this.button;
+        let html = '';
+        for (var i=0; i<myArray.length; i++) {
+            var menu = template;
+            var menuItemHtml = menu.strings[0].replace('{{label}}', myArray[i].name);
+
+            html += menuItemHtml;
+        }
+        page.innerHTML = html;
     }
     render() {
         return html `
       <h2>${this.title}, ${this.personName}</h2>
       <button @click="${this.__increment}">increment</button>
       <div id="app">
+      <div id="secondaryNav"></div>
         <p id="demo"></p>
-        <div id="secondaryNav"></div>
       </div>
     `;
     }
