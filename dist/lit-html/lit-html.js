@@ -53,7 +53,7 @@ if (typeof window !== 'undefined') {
 export const html = (strings, ...values) => new TemplateResult(strings, values, 'html', defaultTemplateProcessor);
 /**
  * Interprets a template literal as an SVG template that can efficiently
- * render to and update a container. 
+ * render to and update a container.
  */
 export const svg = (strings, ...values) => new SVGTemplateResult(strings, values, 'svg', defaultTemplateProcessor);
 //# sourceMappingURL=lit-html.js.map
